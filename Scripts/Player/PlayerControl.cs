@@ -19,8 +19,8 @@ public class PlayerControl : MonoBehaviour
     public GameObject ShotPos;
     private float timer = 0;
 
-    private KeyInterval J_Key=new KeyInterval(KeyCode.J,0.5f);
-    private KeyInterval K_Key = new KeyInterval(KeyCode.K, 0.4f);
+    private KeyInterval Space_Key=new KeyInterval(KeyCode.Space,1f);
+    private KeyInterval K_Key = new KeyInterval(KeyCode.K, 0.5f);
 
     //private int bulletNum = 6;//散弹数量
     //private float angle = 50;//散弹角度
@@ -100,20 +100,20 @@ public class PlayerControl : MonoBehaviour
     //攻击
     private void attack()
     { 
-        J_Key.IntervaleDown(() => 
+        Space_Key.IntervaleDown(() => 
         {
             Shoot();
         },null);
-        //K_Key.IntervaleDown(() =>
-        //{
-        //    //发射子弹
-        //    /*GameObject gameObject = Instantiate(Bullet);
-        //    gameObject.transform.position = ShotPos.transform.position + new Vector3(-0.8f, 0, 0);
+        K_Key.IntervaleDown(() =>
+        {
+            //发射子弹
+            /*GameObject gameObject = Instantiate(Bullet);
+            gameObject.transform.position = ShotPos.transform.position + new Vector3(-0.8f, 0, 0);
 
-        //    GameObject gameObject1 = Instantiate(Bullet);
-        //    gameObject1.transform.position = ShotPos.transform.position + new Vector3(0.8f, 0, 0);*/
-        //    RangeAttack();
-        //},null);
+            GameObject gameObject1 = Instantiate(Bullet);
+            gameObject1.transform.position = ShotPos.transform.position + new Vector3(0.8f, 0, 0);*/
+            RangeAttack();
+        }, null);
 
     }
 
@@ -124,19 +124,20 @@ public class PlayerControl : MonoBehaviour
         gameObject.transform.position = ShotPos.transform.position;
     }
 
-
+    private int bulletNum = 6;//散弹数量
+    private float angle = 50;//散弹角度
 
     //散弹
-    //private void RangeAttack()
-    //{
-    //    float interal = angle / bulletNum;
-    //    for (float i = -angle/2; i < angle/2; i=i+interal)
-    //    { 
-    //        GameObject gameObject= Instantiate(Bullet);
-    //        gameObject.transform.position = ShotPos.transform.position;
-    //        gameObject.transform.eulerAngles = new Vector3(0,i, 0);
-    //    }
-    //}
+    private void RangeAttack()
+    {
+        float interal = angle / bulletNum;
+        for (float i = -angle / 2; i < angle / 2; i = i + interal)
+        {
+            GameObject gameObject = Instantiate(Bullet);
+            gameObject.transform.position = ShotPos.transform.position;
+            gameObject.transform.eulerAngles = new Vector3(0, i, 0);
+        }
+    }
 
     //碰到物体
     private void OnCollisionEnter(Collision collision)
@@ -147,11 +148,18 @@ public class PlayerControl : MonoBehaviour
             Destroy(collision.gameObject);
             //计算伤害
             hp = hp - collision.gameObject.GetComponent<Projectile>().hurt;
-            Debug.Log("dssdsds" + hp);
+            //Debug.Log("dssdsds" + hp);
         }
+        //玩家与敌机碰撞检测
         if (collision.gameObject.tag == "Enemy")
         {
             hp = hp - 50;
+        }
+        //玩家与奖励物碰撞检测
+        if (collision.gameObject.tag == "Daoju")
+        {
+            Destroy(collision.gameObject);
+            Debug.Log("nb666");//奖励物功能
         }
     }
 

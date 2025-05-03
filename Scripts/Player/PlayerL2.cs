@@ -9,14 +9,14 @@ public class PlayerL2 : PlayerControl
         RangeAttack();
     }
 
-    private int bulletNum = 6;//É¢µ¯ÊýÁ¿
-    private float angle = 50;//É¢µ¯½Ç¶È
+    private int L2bulletNum = 3;//É¢µ¯ÊýÁ¿
+    private float L2angle = 36;//É¢µ¯½Ç¶È
 
     //É¢µ¯¹¥»÷
     private void RangeAttack()
     {
-        float interal = angle / bulletNum;
-        for (float i = -angle / 2; i < angle / 2; i = i + interal)
+        float interal = L2angle / L2bulletNum;
+        for (float i = -L2angle / 2; i < L2angle / 2; i = i + interal)
         {
             GameObject gameObject = Instantiate(Bullet);
             gameObject.transform.position = ShotPos.transform.position;

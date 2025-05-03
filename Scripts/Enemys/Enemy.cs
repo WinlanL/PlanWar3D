@@ -196,7 +196,7 @@ public class Enemy : MonoBehaviour
 
             //º∆À„…À∫¶
             hp = hp - collision.gameObject.GetComponent<Projectile>().hurt;
-            Debug.Log(hp);
+            //Debug.Log(hp);
 
         }
         if (collision.gameObject.tag == "Player")

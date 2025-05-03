@@ -14,6 +14,7 @@ public class EnemyGeneration : MonoBehaviour
     private int rangez = 0;
 
     public GameObject[] enemys;
+    public GameObject JL;
     private float timer = 0;
 
     void Start()
@@ -26,6 +27,7 @@ public class EnemyGeneration : MonoBehaviour
 
     void Update()
     {
+        timer += Time.deltaTime;
         //按批次随机生成敌人
         GameObject[] curEnemys = GameObject.FindGameObjectsWithTag("Enemy");
         if (curEnemys.Length == 0)
@@ -42,6 +44,17 @@ public class EnemyGeneration : MonoBehaviour
                 obj.GetComponent<Enemy>().Player = Player;
             }
             
+        }
+        //奖励物每20s生成一个
+        if (timer > 20)
+        {
+            float rx = Random.Range(0, rangex) * 10;
+            float rz = Random.Range(0, rangez) * 10;
+            float x = Rpoint01.position.x + rx;
+            float z = Rpoint02.position.z + rz;
+            GameObject obj = Instantiate(JL);
+            obj.transform.position = new Vector3(Random.Range(-27, 27), 0, 200);
+            timer = 0;
         }
     }
 }
