@@ -7,6 +7,6 @@ public class EnemyL1 : Enemy
     private void Start()
     {
         //每一个敌人给予不同的血量、速度、伤害
-        Init(200, 30, 20, 1);
+        Init(200, 30, 1);
     }
 }

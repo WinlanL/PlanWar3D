@@ -7,7 +7,7 @@ public class EnemyL2 : Enemy
     private void Start()
     {
         //每一个敌人给予不同的血量、速度、伤害
-        Init(300, 35, 100, 0.8f);
+        Init(300, 35, 0.8f);
     }
 
     public override void ShootBullet()

@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     //敌机参数设置
     private float hp;//血量
     private float speed = 30;//速度
-    private float hurt;//伤害
+    //private float hurt;//伤害
     private float attackInterval = 1; //两次攻击间隔
 
     //void Start()
@@ -23,11 +23,11 @@ public class Enemy : MonoBehaviour
     //    Init(200, 30, 10);
     //}
 
-    protected void Init(float hp, float speed, float hurt, float attackInterval)
+    protected void Init(float hp, float speed, float attackInterval)
     {
         this.hp = hp;
         this.speed = speed;
-        this.hurt = hurt;
+        //this.hurt = hurt;
         this.attackInterval = attackInterval;
 
         rigidbody = GetComponent<Rigidbody>();
