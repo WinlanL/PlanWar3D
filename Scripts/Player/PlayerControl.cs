@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Net.Mime;
 
 
 public class PlayerControl : MonoBehaviour
@@ -145,8 +146,12 @@ public class PlayerControl : MonoBehaviour
             //Ïú»Ù×Óµ¯
             Destroy(collision.gameObject);
             //¼ÆËãÉËº¦
-            hp = hp - collision.gameObject.GetComponent<Bullet>().hurt;
+            hp = hp - collision.gameObject.GetComponent<Projectile>().hurt;
             Debug.Log("dssdsds" + hp);
+        }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            hp = hp - 50;
         }
     }
 

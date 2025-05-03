@@ -6,7 +6,7 @@ public class EnemyL1 : Enemy
 {
     private void Start()
     {
-        //每一个敌人给予不同的血量、速度、伤害
-        Init(200, 30, 1);
+        //每一个敌人给予不同的血量、速度、伤害、攻击间隔
+        Init(40, 30, 50, 2.5f);
     }
 }

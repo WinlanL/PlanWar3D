@@ -6,8 +6,8 @@ public class EnemyL2 : Enemy
 {
     private void Start()
     {
-        //每一个敌人给予不同的血量、速度、伤害
-        Init(300, 35, 0.8f);
+        //每一个敌人给予不同的血量、速度、伤害、攻击间隔
+        Init(20, 40,50, 4);
     }
 
     public override void ShootBullet()
@@ -25,8 +25,8 @@ public class EnemyL2 : Enemy
 
 
     //计算敌人L2的分数
-    public override void caScore()
-    {
-        GameManager.Instance.SetScore(40);
-    }
+    //public override void caScore()
+    //{
+    //    GameManager.Instance.SetScore(40);
+    //}
 }
