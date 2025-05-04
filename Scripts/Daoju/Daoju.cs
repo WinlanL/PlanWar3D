@@ -15,6 +15,11 @@ public class Daoju : MonoBehaviour
   
     void Update()
     {
+        timer += Time.deltaTime;
         this.transform.position += new Vector3(0, 0, -speed * Time.deltaTime);
+        if (timer > 8)
+        { 
+            Destroy(this.gameObject);
+        }
     }
 }

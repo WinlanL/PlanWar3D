@@ -59,14 +59,18 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("_01_StartMenu1");
     }
-    public void LoadScene_02_Main()
+    public void LoadScene_03_ChoosePlane()
     {
-        SceneManager.LoadScene("_02_Main");
+        SceneManager.LoadScene("_03_ChoosePlane");
     }
-    public void LoadScene_03_Battle01()
+    public void LoadScene_04_Battle01()
     {
-        SceneManager.LoadScene("_03_Battle01");
+        SceneManager.LoadScene("_04_Battle01");
     }
+    //public void LoadScene_01_02_ChooseMenu()
+    //{
+    //    SceneManager.LoadScene("_01_02_ChooseMenu");
+    //}
     //当场景加载完成之后
     private void sceneLoadedOk(Scene scene, LoadSceneMode sceneMode)
     {
