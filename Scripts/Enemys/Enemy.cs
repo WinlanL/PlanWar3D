@@ -146,7 +146,9 @@ public class Enemy : MonoBehaviour
     {
         //敌机死亡后旋转下坠
         rigidbody.AddForceAtPosition(Vector3.up * -2, transform.position + new Vector3(5, 0, 0), ForceMode.Impulse);
-        //生成一个爆炸  todo
+        //生成一个爆炸
+        GameObject obj = Instantiate(BoomEffect02);
+        obj.transform.position =this.transform.position;
         rigidbody.useGravity = true;
         isDie = true;
         //计算分数
@@ -186,6 +188,9 @@ public class Enemy : MonoBehaviour
 
 
     //碰到物体
+
+    public GameObject BoomEffect01;
+    public GameObject BoomEffect02;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
@@ -193,7 +198,8 @@ public class Enemy : MonoBehaviour
             //销毁子弹
             Destroy(collision.gameObject);
             //播放爆炸特效  todo
-
+            GameObject obj = Instantiate(BoomEffect01);
+            obj.transform.position= collision.gameObject.transform.position;
             //计算伤害
             hp = hp - collision.gameObject.GetComponent<Projectile>().hurt;
             //Debug.Log(hp);
@@ -201,6 +207,8 @@ public class Enemy : MonoBehaviour
         }
         if (collision.gameObject.tag == "Player")
         {
+            GameObject obj = Instantiate(BoomEffect02);
+            obj.transform.position = collision.gameObject.transform.position;
             Destroy(this.gameObject);
         }
     }
