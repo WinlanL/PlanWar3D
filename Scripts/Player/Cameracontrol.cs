@@ -10,6 +10,7 @@ public class Cameracontrol : MonoBehaviour
     public float speed = 3;
     void Start()
     {
+        player=GameManager.Instance.GetCurPlayer();
         //调整偏移，摄像头居中
         offset = transform.position - player.transform.position;
         offset = new Vector3(0, offset.y, offset.z);

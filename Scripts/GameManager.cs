@@ -17,18 +17,29 @@ public class GameManager : MonoBehaviour
     #endregion
 
     private GameOverPanel gamePanel;
+    //玩家数组
+    public GameObject[] Players;
+    //当前玩家
+    public int playerIndex = 0;
 
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
 
-        //通过SceneManager获取到当前激活的场景
-        //Scene scene = SceneManager.GetActiveScene();
-        //Debug.Log(scene.name);
-        //Debug.Log(scene.buildIndex);
-
         //场景初始化
         Init();
+    }
+
+    //玩家实例化
+    private GameObject insPlayer;//实例化的player
+    public void InstantiatePlayer()
+    {
+        insPlayer = Instantiate(Players[playerIndex], new Vector3(0, 0, 0), Quaternion.identity);
+    }
+
+    public GameObject GetCurPlayer()
+    { 
+        return insPlayer;
     }
 
     void Update()
@@ -72,9 +83,21 @@ public class GameManager : MonoBehaviour
     //    SceneManager.LoadScene("_01_02_ChooseMenu");
     //}
     //当场景加载完成之后
+    //private void sceneLoadedOk(Scene scene, LoadSceneMode sceneMode)
+    //{
+    //    Debug.Log("进入到新场景，新场景名称为：" + scene.name);
+    //    if (scene.name == "_04_Battle01")
+    //    {
+    //        InstantiatePlayer();
+    //    }
+    //}
     private void sceneLoadedOk(Scene scene, LoadSceneMode sceneMode)
     {
         Debug.Log("进入到新场景，新场景名称为：" + scene.name);
+        if (scene.name == "_04_Battle01")
+        {
+            InstantiatePlayer();
+        }
     }
     #endregion
 

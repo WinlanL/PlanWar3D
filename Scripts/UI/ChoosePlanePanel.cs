@@ -27,6 +27,7 @@ public class ChoosePlanePanel : MonoBehaviour
     public void StartGameBtnClick()
     {
         GameManager.Instance.LoadScene_04_Battle01();
+
     }
     public void leftBtnClick()
     {
@@ -35,6 +36,8 @@ public class ChoosePlanePanel : MonoBehaviour
         showIndex--;
         showIndex = showIndex < 0 ? players.Length - 1 : showIndex;
         players[showIndex].SetActive(true);
+        //通知gamemanager当前选择的战机
+        GameManager.Instance.playerIndex = showIndex;
     }
     public void rightBtnClick()
     {
@@ -43,5 +46,7 @@ public class ChoosePlanePanel : MonoBehaviour
         showIndex++;
         showIndex = showIndex % players.Length;
         players[showIndex].SetActive(true);
+        //通知gamemanager当前选择的战机
+        GameManager.Instance.playerIndex = showIndex;
     }
 }

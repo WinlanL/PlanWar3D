@@ -14,7 +14,7 @@ public class GameOverPanel : MonoBehaviour
 
     void Start()
     {
-        overPanel.SetActive(false);
+        playerControl = GameManager.Instance.GetCurPlayer().GetComponent<PlayerControl>();
         returnBtn.onClick.AddListener(returnBtnClick);
         //gamepanel¸³Öµ
         GameManager.Instance.SetGamePanel(this);

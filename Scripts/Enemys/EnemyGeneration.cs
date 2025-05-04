@@ -19,6 +19,7 @@ public class EnemyGeneration : MonoBehaviour
 
     void Start()
     {
+        Player = GameManager.Instance.GetCurPlayer();
         rangex = (int)((Rpoint02.position.x - Rpoint01.position.x) / 10);
         rangez = (int)((Rpoint02.position.z - Rpoint01.position.z) / 10);
     }
