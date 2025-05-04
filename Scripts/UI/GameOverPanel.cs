@@ -28,7 +28,7 @@ public class GameOverPanel : MonoBehaviour
     }
     public void returnBtnClick()
     {
-        GameManager.Instance.LoadScene_03_ChoosePlane ();
+        GameManager.Instance.LoadScene_02_GameChoose();
     }
 
     public int score = 0;

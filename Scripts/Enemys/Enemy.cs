@@ -47,8 +47,10 @@ public class Enemy : MonoBehaviour
 
     private bool isDie = false;
     private float timer = 0;
+    private float timer2 = 0;
     void Update()
     {
+        timer2 += Time.deltaTime;
         raySixDirCollision.RaySixDirCollisionUpdate(this.transform);
         if (hp <= 0 && !isDie)
         {
@@ -71,7 +73,11 @@ public class Enemy : MonoBehaviour
             move();
             attack();
         }
-        
+        //删除坐标系出问题的飞机
+        if (timer2 > 20)
+        {
+            Destroy(this.gameObject);
+        }
     }
     //敌机移动
     public void move()
@@ -95,7 +101,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
+        //修正敌人位置，使敌人维持在对战平面上
         if(this.transform.position.y > 0 )
         {
             rigidbody.AddForce(Vector3.down * 10);
@@ -113,7 +119,7 @@ public class Enemy : MonoBehaviour
             rigidbody.AddForce(Vector3.right * 30);
         }
         //向前移动
-        rigidbody.AddRelativeForce(Vector3.forward * speed);
+        rigidbody.AddRelativeForce(Vector3.forward * speed*3);
         //敌人左右边界
         //Vector3 NextPos = transform.position;
         //if (NextPos.x > 28f || NextPos.x < -28f)
@@ -152,7 +158,7 @@ public class Enemy : MonoBehaviour
         rigidbody.useGravity = true;
         isDie = true;
         //计算分数
-        //caScore();
+        caScore();
     }
 
     public virtual void caScore()

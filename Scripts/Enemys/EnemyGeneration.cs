@@ -41,7 +41,7 @@ public class EnemyGeneration : MonoBehaviour
                 float x = Rpoint01.position.x + rx;
                 float z = Rpoint02.position.z + rz;
                 GameObject obj = Instantiate(enemys[enemyIndex]);
-                obj.transform.position = new Vector3(x+i, 0, z-i);
+                obj.transform.position = new Vector3(x+(i+2), 0, z-(i-1));
                 obj.GetComponent<Enemy>().Player = Player;
             }
             

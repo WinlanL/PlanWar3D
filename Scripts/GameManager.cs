@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] Players;
     //当前玩家
     public int playerIndex = 0;
+    //是否选择关卡模式
+    public int ChooseLevel = 0;
 
     void Start()
     {
@@ -70,6 +72,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("_01_StartMenu1");
     }
+    public void LoadScene_02_GameChoose()
+    {
+        SceneManager.LoadScene("_02_GameChoose");
+    }
     public void LoadScene_03_ChoosePlane()
     {
         SceneManager.LoadScene("_03_ChoosePlane");
@@ -78,19 +84,12 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("_04_Battle01");
     }
-    //public void LoadScene_01_02_ChooseMenu()
-    //{
-    //    SceneManager.LoadScene("_01_02_ChooseMenu");
-    //}
-    //当场景加载完成之后
-    //private void sceneLoadedOk(Scene scene, LoadSceneMode sceneMode)
-    //{
-    //    Debug.Log("进入到新场景，新场景名称为：" + scene.name);
-    //    if (scene.name == "_04_Battle01")
-    //    {
-    //        InstantiatePlayer();
-    //    }
-    //}
+    public void LoadScene_0203_LevelMenu()
+    {
+        SceneManager.LoadScene("_0203_LevelMenu");
+    }
+
+
     private void sceneLoadedOk(Scene scene, LoadSceneMode sceneMode)
     {
         Debug.Log("进入到新场景，新场景名称为：" + scene.name);

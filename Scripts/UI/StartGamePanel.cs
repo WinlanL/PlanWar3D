@@ -22,6 +22,6 @@ public class StartGamePanel : MonoBehaviour
 
     public void LoginBtnClick()
     {
-        GameManager.Instance.LoadScene_03_ChoosePlane();
+        GameManager.Instance.LoadScene_02_GameChoose();
     }
 }
