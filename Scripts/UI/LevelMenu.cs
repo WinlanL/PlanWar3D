@@ -9,6 +9,8 @@ public class LevelMenu : MonoBehaviour
     public Button levelBtn2;
     public Button levelBtn3;
     public Button backBtn;
+    public GameObject lock2;
+    public GameObject Nolock;
     
     void Start()
     {
@@ -16,6 +18,11 @@ public class LevelMenu : MonoBehaviour
         levelBtn2.onClick.AddListener(levelBtn2Click);
         levelBtn3.onClick.AddListener(levelBtn3Click);
         backBtn.onClick.AddListener(backBtnClick);
+        if (GameManager.Instance.LevelPass == 1)
+        {
+            lock2.SetActive(false);
+            Nolock.SetActive(true);
+        }
     }
 
    

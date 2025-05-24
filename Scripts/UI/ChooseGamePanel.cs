@@ -22,6 +22,7 @@ public class ChooseGamePanel : MonoBehaviour
 
     public void InfiniteGameBtnClick()
     {
+        GameManager.Instance.ChooseLevel = 0;
         GameManager.Instance.LoadScene_03_ChoosePlane();
     }
     public void LevelGameBtnClick()

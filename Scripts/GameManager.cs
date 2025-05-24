@@ -17,12 +17,16 @@ public class GameManager : MonoBehaviour
     #endregion
 
     private GameOverPanel gamePanel;
+    public AudioSource audioSource;
     //玩家数组
     public GameObject[] Players;
     //当前玩家
     public int playerIndex = 0;
     //是否选择关卡模式
     public int ChooseLevel = 0;
+    public int LevelPass = 0;
+    //玩家当前血量
+    public float BloodNow = 0;
 
     void Start()
     {
@@ -30,6 +34,12 @@ public class GameManager : MonoBehaviour
 
         //场景初始化
         Init();
+        //获取历史最高成绩
+        float score = PlayerPrefs.GetFloat("GameScore");
+        //Debug.Log(score);
+
+        //设置背景音乐音量
+        audioSource.volume = 0.4f;
     }
 
     //玩家实例化
@@ -96,6 +106,12 @@ public class GameManager : MonoBehaviour
         if (scene.name == "_04_Battle01")
         {
             InstantiatePlayer();
+            playerIndex = 0;
+            audioSource.volume = 0;
+        }
+        else
+        {
+            audioSource.volume = 0.4f;
         }
     }
     #endregion

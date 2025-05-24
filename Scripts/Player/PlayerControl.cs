@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Net.Mime;
+using UnityEngine.Video;
 
 
 public class PlayerControl : MonoBehaviour
@@ -25,6 +26,9 @@ public class PlayerControl : MonoBehaviour
     //private int bulletNum = 6;//散弹数量
     //private float angle = 50;//散弹角度
 
+    //public AudioSource audioSource;
+    AudioSource audioo;
+
     
     void Start()
     {
@@ -40,7 +44,7 @@ public class PlayerControl : MonoBehaviour
             die();
             hp = 100;
         }
-
+        GameManager.Instance.BloodNow = hp;
 
         HandleTiltInput();
         ApplyTilt();
@@ -160,6 +164,8 @@ public class PlayerControl : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Debug.Log("nb666");//奖励物功能
+            audioo=GetComponent<AudioSource>();
+            audioo.Play();
         }
     }
 

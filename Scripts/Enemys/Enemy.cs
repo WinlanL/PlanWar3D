@@ -119,7 +119,7 @@ public class Enemy : MonoBehaviour
             rigidbody.AddForce(Vector3.right * 30);
         }
         //向前移动
-        rigidbody.AddRelativeForce(Vector3.forward * speed*3);
+        rigidbody.AddRelativeForce(Vector3.forward * speed);
         //敌人左右边界
         //Vector3 NextPos = transform.position;
         //if (NextPos.x > 28f || NextPos.x < -28f)
